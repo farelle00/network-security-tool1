@@ -1,0 +1,14 @@
+services:
+  network-check:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    image: network-security-tool:lab
+    read_only: true
+    cap_drop:
+      - ALL
+    security_opt:
+      - no-new-privileges:true
+    network_mode: none
+    stdin_open: true
+    tty: true
