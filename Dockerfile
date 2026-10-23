@@ -1,10 +1,10 @@
-FROM python:3.12-slim
+FROM python:3.12-alpine
 
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 
 WORKDIR /app
-RUN groupadd --system app && useradd --system --gid app --no-create-home app
+RUN addgroup -S app && adduser -S -G app app
 COPY --chown=app:app network_check.py /app/network_check.py
 USER app
 
